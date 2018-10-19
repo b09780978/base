@@ -12,6 +12,7 @@ ENTRYPOINT ["/sbin/my_init"]
 RUN apt-get update &&\
     apt-get dist-upgrade -y &&\
     apt-get install -y gcc g++ &&\
+    apt-get install -y wget &&\
     apt-get install -y python python-pip &&\
     apt-get install -y python3 python3-pip &&\
     pip install ipython &&\
