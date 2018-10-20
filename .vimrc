@@ -1,6 +1,14 @@
 " Install vim-plug
 set nocompatible
-call plug#begin('~/.vim/plugged')
+call plug#begin()
+
+" UI
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1
 
 " UI
 Plug 'airblade/vim-gitgutter'
@@ -16,7 +24,7 @@ let g:rehash256 = 1
 
 " Feature
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-" Plug 'Shougo/denite.nvim', {'do' : ':UpdateRemotePlugins'}
+Plug 'Shougo/denite.nvim', {'do' : ':UpdateRemotePlugins'}
 Plug 'majutsushi/tagbar'
 let g:tagbar_show_linenumbers = 1
 Plug 'mbbill/undotree'
