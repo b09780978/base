@@ -53,8 +53,8 @@ RUN apt install -y zsh \
 && apt install -y tmux \
 && git clone https://github.com/tmux-plugins/tpm.git ~/.tmux/plugins/tpm \
 && git clone https://github.com/ohmyzsh/oh-my-zsh.git ~/.oh-my-zsh \
-&& git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
-&& git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions \
+&& git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
+&& git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/custom/plugins/zsh-completions \
 && chsh -s /bin/zsh
 
 # Clean up APT when done.

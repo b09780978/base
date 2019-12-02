@@ -61,7 +61,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   zsh-autosuggestions zsh-completions
-  sudo git tmux nmap
+  git tmux nmap
   python pip pep8
   node npm 
 )
