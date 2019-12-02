@@ -25,10 +25,10 @@ RUN apt update \
 && apt install -y \
 && apt install -y gcc g++ gdb \
 && apt install -y bash-completion \
-&& apt install -y git nmap nodejs npm \
 && apt install -y file \
 && apt install -y wget \
-&& add-apt-repository ppa:neovim-ppa/stable \
+&& apt install -y git nmap nodejs npm \
+&& apt install -y neovim python-neovim python3-neovim \
 && apt update \
 && apt dist-upgrade -y \
 && apt install -y python python-pip python-dev \
@@ -41,10 +41,9 @@ RUN python2 -m pip install pip -U \
 &&  pip3 install ipython
 
 # Install neovim and update plugins.
-RUN apt install -y neovim \
-&& pip2 install neovim --user \
-&& pip3 install neovim --user \
-&& curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
+#&& pip2 install neovim --user \
+#&& pip3 install neovim --user \
+RUN curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
 && mkdir -p ~/.config/nvim \
 && ln ~/.vimrc ~/.config/nvim/init.vim \
 && nvim +PlugInstall +q +UpdateRemotePlugins +q
@@ -52,7 +51,8 @@ RUN apt install -y neovim \
 # Install zsh and tmux.
 RUN apt install -y zsh \
 && apt install -y tmux \
-&& git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
+&& git clone https://github.com/tmux-plugins/tpm.git ~/.tmux/plugins/tpm \
+&& git clone https://github.com/ohmyzsh/oh-my-zsh.git ~/.oh-my-zsh \
 && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
 && git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions \
 && chsh -s /bin/zsh
