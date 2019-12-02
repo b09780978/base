@@ -20,19 +20,19 @@ Add .tmux.conf .
 ENTRYPOINT ["/sbin/my_init"]
 
 # Upgrade all package and install gcc, git, python and some often used tools.
-RUN apt-get update \
-&& apt-get dist-upgrade -y \
-&& apt-get install -y \
-&& apt-get install -y gcc g++ gdb \
-&& apt-get install -y git \
-&& apt-get install -y bash-completion \
-&& apt-get install -y file \
-&& apt-get install -y wget \
+RUN apt update \
+&& apt upgrade -y \
+&& apt install -y \
+&& apt install -y gcc g++ gdb \
+&& apt install -y bash-completion \
+&& apt install -y git nmap nodejs npm \
+&& apt install -y file \
+&& apt install -y wget \
 && add-apt-repository ppa:neovim-ppa/stable \
-&& apt-get update \
-&& apt-get dist-upgrade -y \
-&& apt-get install -y python python-pip python-dev \
-&& apt-get install -y python3 python3-pip python3-dev
+&& apt update \
+&& apt dist-upgrade -y \
+&& apt install -y python python-pip python-dev \
+&& apt install -y python3 python3-pip python3-dev
 
 # Update pip and install needed python packages.
 RUN python2 -m pip install pip -U \
@@ -41,20 +41,21 @@ RUN python2 -m pip install pip -U \
 &&  pip3 install ipython
 
 # Install neovim and update plugins.
-RUN apt-get install -y neovim \
+RUN apt install -y neovim \
 && pip2 install neovim --user \
 && pip3 install neovim --user \
 && curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
 && mkdir -p ~/.config/nvim \
 && ln ~/.vimrc ~/.config/nvim/init.vim \
 && nvim +PlugInstall +q +UpdateRemotePlugins +q
-    
 
 # Install zsh and tmux.
-RUN apt-get install -y zsh \
-&& apt-get install -y tmux \
+RUN apt install -y zsh \
+&& apt install -y tmux \
 && git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
+&& git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
+&& git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions \
 && chsh -s /bin/zsh
 
 # Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
