@@ -11,3 +11,5 @@
 - ipython
 
 # neovim
+
+# git
