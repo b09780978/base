@@ -15,47 +15,48 @@ ADD .bashrc .
 Add .vimrc .
 ADD .zshrc .
 Add .tmux.conf .
+ADD .p10k.zsh .
 
-# Use baseimage-docker's init system.
-ENTRYPOINT ["/sbin/my_init"]
-
-# Upgrade all package and install gcc, git, python and some often used tools.
-RUN apt update \
+# Install tools which I usually used
+RUN add-apt-repository ppa:neovim-ppa/stable \
+&& apt update \
 && apt upgrade -y \
-&& apt install -y \
-&& apt install -y gcc g++ gdb \
+&& apt install -y gcc g++ gdb file \
 && apt install -y bash-completion \
-&& apt install -y file \
-&& apt install -y wget \
-&& apt install -y git nmap nodejs npm \
-&& apt install -y neovim python-neovim python3-neovim \
+&& apt install -y wget curl \
+&& apt install -y nodejs npm \
+&& apt install -y git neovim\
 && apt update \
 && apt dist-upgrade -y \
-&& apt install -y python python-pip python-dev \
-&& apt install -y python3 python3-pip python3-dev
+&& apt install -y python python-dev \
+&& apt install -y python3 python3-dev
 
 # Update pip and install needed python packages.
-RUN python2 -m pip install pip -U \
-&&  python3 -m pip install pip -U \
-&&  pip2 install ipython \
-&&  pip3 install ipython
+RUN cd /tmp \
+&& wget https://bootstrap.pypa.io/get-pip.py \
+&& python3 get-pip.py \
+&& python3 -m pip install pip -U \
+&& pip3 install ipython requests pyquery
 
 # Install neovim and update plugins.
-#&& pip2 install neovim --user \
-#&& pip3 install neovim --user \
 RUN curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
 && mkdir -p ~/.config/nvim \
 && ln ~/.vimrc ~/.config/nvim/init.vim \
 && nvim +PlugInstall +q +UpdateRemotePlugins +q
 
-# Install zsh and tmux.
+# Install zsh, tmux and used plugins
 RUN apt install -y zsh \
 && apt install -y tmux \
 && git clone https://github.com/tmux-plugins/tpm.git ~/.tmux/plugins/tpm \
-&& git clone https://github.com/ohmyzsh/oh-my-zsh.git ~/.oh-my-zsh \
-&& git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
-&& git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/custom/plugins/zsh-completions \
+&& wget "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Regular.ttf" \
+&& mkdir -p ~/.fonts/ \
+&& mv "MesloLGS NF Regular.ttf" ~/.fonts/ \
+&& zsh -ic "source ~/.zshrc" \
 && chsh -s /bin/zsh
 
-# Clean up APT when done.
-RUN apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# Clean up APT  cache when done.
+RUN apt autoremove -y \
+&& apt autoclean -y \
+&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+CMD ["/sbin/my_init"]
