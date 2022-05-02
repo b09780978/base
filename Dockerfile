@@ -15,7 +15,6 @@ ADD .bashrc .
 Add .vimrc .
 ADD .zshrc .
 Add .tmux.conf .
-ADD .p10k.zsh .
 
 # Install tools which I usually used
 RUN add-apt-repository ppa:neovim-ppa/stable \
