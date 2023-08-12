@@ -27,7 +27,7 @@ RUN apt update \
 && apt install -y git neovim \
 && apt update \
 && apt dist-upgrade -y \
-&& apt install -y python python-dev \
+# && apt install -y libnss3 nss-plugin-pem ca-certificates \
 && apt install -y python3 python3-dev
 
 # Update pip and install needed python packages.
@@ -35,7 +35,7 @@ RUN cd /tmp \
 && wget https://bootstrap.pypa.io/get-pip.py \
 && python3 get-pip.py \
 && python3 -m pip install pip -U \
-&& pip3 install ipython requests pyquery aiohttp cchardet aiodns
+&& pip3 install ipython requests pyquery aiohttp cchardet aiodns curl_cffi
 
 # Install neovim and update plugins.
 RUN curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
