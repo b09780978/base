@@ -18,8 +18,7 @@ ADD .zshrc .
 Add .tmux.conf .
 
 # Install tools which I usually used
-RUN add-apt-repository ppa:neovim-ppa/stable \
-&& apt update \
+RUN apt update \
 && apt upgrade -y \
 && apt install -y gcc g++ gdb file \
 && apt install -y bash-completion \
