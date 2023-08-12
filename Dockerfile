@@ -58,4 +58,4 @@ RUN apt autoremove -y \
 && apt autoclean -y \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-CMD ["/sbin/my_init"]
+CMD ["/bin/zsh"]
