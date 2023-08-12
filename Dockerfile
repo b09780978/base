@@ -1,4 +1,5 @@
-FROM phusion/baseimage:master-amd64
+FROM ubuntu
+#FROM phusion/baseimage:master-amd64
 MAINTAINER faker <b09780978@gmail.com>
 
 WORKDIR /root
