@@ -6,9 +6,9 @@ WORKDIR /root
 
 # Set env.
 ENV TERM xterm-256color
-ENV LANG en_US.UTF-8
+ENV LANG C.UTF-8
 ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+ENV LC_ALL C.UTF-8
 ENV XDG_CONFIG_HOME /root/.config
 
 # Add config file.
