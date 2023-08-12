@@ -4,12 +4,10 @@
 - zsh
 - tmux
 
-# python3 and node.js
+# python3
 - requests
 - pyquery
-- aiohttp
 - ipython
-- curl_cffi (bypass anti-bot)
 
 # neovim
 
