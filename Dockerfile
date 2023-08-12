@@ -24,7 +24,7 @@ RUN apt update \
 && apt install -y bash-completion \
 && apt install -y wget curl \
 && apt install -y nodejs npm \
-&& apt install -y git neovim\
+&& apt install -y git neovim \
 && apt update \
 && apt dist-upgrade -y \
 && apt install -y python python-dev \
