@@ -35,7 +35,7 @@ RUN cd /tmp \
 && wget https://bootstrap.pypa.io/get-pip.py \
 && python3 get-pip.py \
 && python3 -m pip install pip -U \
-&& pip3 install ipython requests pyquery
+&& pip3 install ipython requests pyquery httpx[http2,cli,socks]
 
 # Install neovim and update plugins.
 RUN curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
