@@ -33,10 +33,10 @@ RUN apt update \
 # Update pip and install needed python packages.
 RUN cd ~ && python3 -m venv venv \
 && cd /tmp && wget https://bootstrap.pypa.io/get-pip.py \
-&& ~/venv/python3 get-pip.py \
-&& ~/venv/python3 -m pip install pip -U \
-&& ~/venv/pip3 install ipython requests pyquery beautifulsoup4 httpx[http2,cli,socks,brotli] \
-&& ~/venv/pip3 install fastapi[all] uvicorn[standard] \
+&& ~/venv/bin/python3 get-pip.py \
+&& ~/venv/bin/python3 -m pip install pip -U \
+&& ~/venv/bin/pip3 install ipython requests pyquery beautifulsoup4 httpx[http2,cli,socks,brotli] \
+&& ~/venv/bin/pip3 install fastapi[all] uvicorn[standard] \
 && echo "alias python=~/venv/bin/python3" >> ~/.zshrc \
 && echo "alias pip=~/venv/bin/pip3" >> ~/.zshrc \
 && echo "alias python3=~/venv/bin/python3" >> ~/.zshrc \
