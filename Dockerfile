@@ -35,7 +35,7 @@ RUN cd /tmp \
 && wget https://bootstrap.pypa.io/get-pip.py \
 && python3 get-pip.py \
 && python3 -m pip install pip -U \
-&& pip3 install ipython requests pyquery httpx[http2,cli,socks] \
+&& pip3 install ipython requests pyquery beautifulsoup4 httpx[http2,cli,socks] \
 && pip3 install fastapi[all] uvicorn[standard]
 
 # Install neovim and update plugins.
