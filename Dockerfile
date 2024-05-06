@@ -41,7 +41,7 @@ RUN cd ~ && python3 -m venv venv \
 && echo "alias pip=~/venv/bin/pip3" >> ~/.zshrc \
 && echo "alias python3=~/venv/bin/python3" >> ~/.zshrc \
 && echo "alias pip3=~/venv/bin/pip3" >> ~/.zshrc \
-&& source ~/.zshrc
+&& zsh -ic "source ~/.zshrc"
 
 # Install neovim and update plugins.
 RUN curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
