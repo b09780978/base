@@ -28,14 +28,15 @@ RUN apt update \
 && apt update \
 && apt dist-upgrade -y \
 # && apt install -y libnss3 nss-plugin-pem ca-certificates \
-&& apt install -y python3 python3-dev
+&& apt install -y python3 python3-dev python3-pip
 
 # Update pip and install needed python packages.
-RUN cd /tmp \
-&& wget https://bootstrap.pypa.io/get-pip.py \
-&& python3 get-pip.py \
-&& python3 -m pip install pip -U \
-&& pip3 install ipython requests pyquery beautifulsoup4 httpx[http2,cli,socks] \
+#RUN cd /tmp \
+#&& wget https://bootstrap.pypa.io/get-pip.py \
+#&& python3 get-pip.py \
+#&& python3 -m pip install pip -U \
+RUN python3 -m pip install pip -U \
+&& pip3 install ipython requests pyquery beautifulsoup4 httpx[http2,cli,socks,brotli] \
 && pip3 install fastapi[all] uvicorn[standard]
 
 # Install neovim and update plugins.
