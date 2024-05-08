@@ -62,4 +62,4 @@ alias vi="nvim"
 alias vim="nvim"
 alias grep='grep --color=always'
 
-export PATH=${PATH}:~/.local/bin:~/venv/bin
+export PATH=~/venv/bin:${PATH}:~/.local/bin
