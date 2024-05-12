@@ -38,7 +38,7 @@ RUN cd ~ && python3 -m venv venv \
 && ~/venv/bin/pip3 install ipython requests pyquery beautifulsoup4 httpx[http2,cli,socks,brotli] \
 && ~/venv/bin/pip3 install fastapi[all] uvicorn[standard] gunicorn \
 && ~/venv/bin/pip3 install numpy \
-&& ~/venv/bin/pip3 install SQLAlchemy hatch
+&& ~/venv/bin/pip3 install SQLAlchemy databases[aiosqlite] hatch
 
 # Install neovim and update plugins.
 RUN curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
