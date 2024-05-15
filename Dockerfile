@@ -35,6 +35,7 @@ RUN cd ~ && python3 -m venv venv \
 && cd /tmp && wget https://bootstrap.pypa.io/get-pip.py \
 && ~/venv/bin/python3 get-pip.py \
 && ~/venv/bin/python3 -m pip install pip -U \
+&& ~/venv/bin/python3 -m pip install lzstring \
 && ~/venv/bin/pip3 install ipython requests pyquery beautifulsoup4 httpx[http2,cli,socks,brotli] \
 && ~/venv/bin/pip3 install fastapi[all] uvicorn[standard] gunicorn \
 && ~/venv/bin/pip3 install numpy \
