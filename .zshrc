@@ -7,22 +7,26 @@ if [[ ! -f ~/.zinit/bin/zinit.zsh ]]; then
 fi
 
 source ~/.zinit/bin/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Theme
 zinit ice depth=1
 zinit light agnoster/agnoster-zsh-theme
 
-zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light marlonrichert/zsh-autocomplete
-zinit light hlissner/zsh-autopair
+zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-history-substring-search
 zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light hlissner/zsh-autopair
 
 zinit snippet OMZ::lib/completion.zsh
 zinit snippet OMZ::lib/history.zsh
 zinit snippet OMZ::lib/key-bindings.zsh
 zinit snippet OMZ::lib/theme-and-appearance.zsh
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # User configuration
 
@@ -52,9 +56,6 @@ zinit snippet OMZ::lib/theme-and-appearance.zsh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 
 alias ll="ls -al"
 alias vi="nvim"
