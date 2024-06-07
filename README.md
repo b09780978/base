@@ -10,5 +10,6 @@
 - ipython
 
 # neovim
+- lazy.nvim
 
 # git
