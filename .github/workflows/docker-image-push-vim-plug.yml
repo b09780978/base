@@ -2,7 +2,7 @@ name: Push Docker Image
 
 on:
   push:
-    branches: [ master ]
+    branches: [ vim-plug ]
     
 jobs:
   push_to_registry:
@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: b09780978/base:latest
+          tags: b09780978/base:vim-plug
