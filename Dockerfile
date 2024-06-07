@@ -13,7 +13,6 @@ ENV XDG_CONFIG_HOME /root/.config
 
 # Add config file.
 ADD .bashrc .
-Add .vimrc .
 ADD .zshrc .
 Add .tmux.conf .
 
@@ -42,10 +41,8 @@ RUN cd ~ && python3 -m venv venv \
 && ~/venv/bin/pip3 install SQLAlchemy databases[aiosqlite] hatch
 
 # Install neovim and update plugins.
-RUN curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
-&& mkdir -p ~/.config/nvim \
-&& ln ~/.vimrc ~/.config/nvim/init.vim \
-&& nvim +PlugInstall +q +UpdateRemotePlugins +q
+RUN git clone https://github.com/b09780978/nvim.git ~/.config/nvim && \
+nvim --headless "+Lazy! sync" +qa
 
 # Install zsh, tmux and used plugins
 RUN apt install -y zsh \
