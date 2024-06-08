@@ -42,8 +42,11 @@ RUN cd ~ && python3 -m venv venv \
 && ~/venv/bin/pip3 install hatch flake8
 
 # Install neovim and update plugins.
-RUN git clone https://github.com/b09780978/nvim.git ~/.config/nvim && \
-nvim --headless "+Lazy! sync" +qa
+RUN git clone https://github.com/b09780978/nvim.git ~/.config/nvim \
+&& nvim --headless "+Lazy! sync" +qa && \
+&& nvim --headless "+MasonToolsInstallSync" +qa \
+&& nvim --headless -c "MasonInstall typescript-language-server" -c "qall" \
+&& nvim --headless -c "MasonInstall pyright" -c "qall"
 
 # Install zsh, tmux and used plugins
 RUN apt install -y zsh \
