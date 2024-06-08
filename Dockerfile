@@ -44,6 +44,7 @@ RUN cd ~ && python3 -m venv venv \
 # Install neovim and update plugins.
 RUN git clone https://github.com/b09780978/nvim.git ~/.config/nvim \
 && nvim --headless "+Lazy! sync" +qa \
+&& nvim --headless "+MasonUpdate" +qa \
 && nvim --headless "+MasonToolsInstallSync" +qa \
 && nvim --headless -c "MasonInstall typescript-language-server" -c "qall" \
 && nvim --headless -c "MasonInstall pyright" -c "qall"
