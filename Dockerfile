@@ -39,7 +39,7 @@ RUN cd ~ && python3 -m venv venv \
 && ~/venv/bin/pip3 install fastapi[all] uvicorn[standard] gunicorn \
 && ~/venv/bin/pip3 install numpy \
 && ~/venv/bin/pip3 install SQLAlchemy databases[aiosqlite] \
-&& ~/venv/bin/pip3 install hatch flake8
+&& ~/venv/bin/pip3 install hatch flake8 pylint isort black pyright autopep8
 
 # Install neovim and update plugins.
 RUN git clone https://github.com/b09780978/nvim.git ~/.config/nvim \
