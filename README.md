@@ -8,6 +8,7 @@
 - requests
 - pyquery
 - ipython
+- numpy
 
 # neovim
 - lazy.nvim
