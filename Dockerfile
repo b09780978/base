@@ -27,6 +27,7 @@ RUN apt update \
 && apt update \
 && apt dist-upgrade -y \
 # && apt install -y libnss3 nss-plugin-pem ca-certificates \
+&& apt install -y ripgrep unzip fd-find \
 && apt install -y python3 python3-dev python3-pip python3-venv
 
 # Update pip and install needed python packages.
