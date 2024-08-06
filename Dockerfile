@@ -38,7 +38,7 @@ RUN cd ~ && python3 -m venv venv \
 && ~/venv/bin/python3 -m pip install lzstring pynvim \
 && ~/venv/bin/pip3 install ipython requests pyquery beautifulsoup4 httpx[http2,cli,socks,brotli] \
 && ~/venv/bin/pip3 install fastapi[all] uvicorn[standard] gunicorn \
-&& ~/venv/bin/pip3 install numpy \
+&& ~/venv/bin/pip3 install numpy notebook \
 && ~/venv/bin/pip3 install SQLAlchemy databases[aiosqlite] \
 && ~/venv/bin/pip3 install hatch flake8 pylint isort black pyright autopep8
 
