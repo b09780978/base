@@ -40,15 +40,15 @@ RUN cd ~ && python3 -m venv venv \
 && ~/venv/bin/pip3 install fastapi[all] uvicorn[standard] gunicorn \
 && ~/venv/bin/pip3 install numpy notebook \
 && ~/venv/bin/pip3 install SQLAlchemy databases[aiosqlite] \
-&& ~/venv/bin/pip3 install hatch ruff pylint autopep8
+&& ~/venv/bin/pip3 install hatch ruff autopep8
 
 # Install neovim and update plugins.
 RUN git clone https://github.com/b09780978/nvim.git ~/.config/nvim \
 && nvim --headless "+Lazy! sync" +qa \
 && nvim --headless "+MasonUpdate" +qa \
 && nvim --headless "+MasonToolsInstallSync" +qa \
-&& nvim --headless -c "MasonInstall typescript-language-server" -c "qall" \
-&& nvim --headless -c "MasonInstall pyright" -c "qall"
+&& nvim --headless -c "MasonInstall typescript-language-server" -c "qall"
+#&& nvim --headless -c "MasonInstall pyright" -c "qall"
 
 # Install zsh, tmux and used plugins
 RUN apt install -y zsh \
