@@ -9,6 +9,7 @@
 - pyquery
 - ipython
 - numpy
+- uv
 
 # neovim
 - lazy.nvim
